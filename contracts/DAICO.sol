@@ -6,9 +6,15 @@ import "./SafeMath.sol";
 contract DAICO {
     using SafeMath for uint;
 
-    //modifier to check the owner
+    //to check the function caller is owner
     modifier ownerOnly(){
         require( msg.sender == owner);
+        _;
+    }
+
+    //to check the balance is enough
+    modifier enoughBalance(uint amount){
+        address(this).balance >= amount;
         _;
     }
 
@@ -28,7 +34,9 @@ contract DAICO {
     address[] public investors;
     Payment[] public payments;
 
-    constructor(string memory _description, uint _minInvest, uint _maxInvest, uint _goal) public {
+    constructor(string memory _description, uint _minInvest, uint _maxInvest, uint _goal)
+        public
+    {
         owner       = msg.sender;
         description = _description;
         minInvest   = _minInvest;
@@ -36,7 +44,10 @@ contract DAICO {
         goal        = _goal;
     }
 
-    function contribute() public payable {
+    function contribute()
+        public
+        payable
+    {
 
         //money amount checking
         require(msg.value >= minInvest);
@@ -54,7 +65,11 @@ contract DAICO {
     }
 
     // generate a payment
-    function createPayment(string memory _description, uint _amount, address payable _receiver) public ownerOnly {
+    function createPayment(string memory _description, uint _amount, address payable _receiver)
+        public 
+        ownerOnly
+        enoughBalance(_amount)
+    {
 
         // build a payment
         Payment memory newPayment = Payment({
@@ -70,7 +85,9 @@ contract DAICO {
     }
 
     //
-    function approvePayment(uint index) public {
+    function approvePayment(uint index)
+        public
+    {
         Payment storage payment = payments[index];
         
         //check is investor
@@ -97,7 +114,11 @@ contract DAICO {
         payment.voters.push(msg.sender);
     }
 
-    function doPay(uint index) public ownerOnly{
+    function doPay(uint index)
+        public
+        ownerOnly
+        enoughBalance(payments[index].amount)
+    {
 
         Payment storage payment = payments[index];
 
