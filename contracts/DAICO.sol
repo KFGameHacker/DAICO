@@ -35,7 +35,7 @@ contract DAICO {
         //money amount checking
         require(msg.value >= minInvest);
         require(msg.value <= maxInvest);
-        
+
         //require(address(this).balance <= goal);
         //using SafeMath to protect overflow
         uint newBalance = 0;
@@ -51,7 +51,7 @@ contract DAICO {
     function createPayment(string memory _description, uint _amount, address payable _receiver) public {
 
         //only contract owner can create the payment
-        //do not checked here.
+        require(msg.sender == owner);
 
         // build a payment
         Payment memory newPayment = Payment({
@@ -95,6 +95,10 @@ contract DAICO {
     }
 
     function doPay(uint index) public {
+
+        //only project owner can do the payment
+        require(msg.sender == owner);
+
         Payment storage payment = payments[index];
 
         //project must be incompleted
