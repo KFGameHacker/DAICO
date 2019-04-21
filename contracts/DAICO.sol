@@ -6,6 +6,12 @@ import "./SafeMath.sol";
 contract DAICO {
     using SafeMath for uint;
 
+    //modifier to check the owner
+    modifier ownerOnly(){
+        require( msg.sender == owner);
+        _;
+    }
+
     struct Payment{
         string description;
         uint amount;
@@ -48,10 +54,7 @@ contract DAICO {
     }
 
     // generate a payment
-    function createPayment(string memory _description, uint _amount, address payable _receiver) public {
-
-        //only contract owner can create the payment
-        require(msg.sender == owner);
+    function createPayment(string memory _description, uint _amount, address payable _receiver) public ownerOnly {
 
         // build a payment
         Payment memory newPayment = Payment({
@@ -94,10 +97,7 @@ contract DAICO {
         payment.voters.push(msg.sender);
     }
 
-    function doPay(uint index) public {
-
-        //only project owner can do the payment
-        require(msg.sender == owner);
+    function doPay(uint index) public ownerOnly{
 
         Payment storage payment = payments[index];
 
