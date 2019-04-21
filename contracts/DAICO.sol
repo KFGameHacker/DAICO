@@ -68,8 +68,10 @@ contract DAICO {
         // xxxxxxxxx => xxxx wei
         // example:
         // 5D35F3e..D => 100000 wei
-        investors[msg.sender] = msg.value;
-        investorCount.add(1);
+        //bug fix: allow investors to invest more than one time
+        //and the total invest amount accumulating correctly
+        investors[msg.sender] += msg.value;
+        investorCount += 1;
 
     }
 
@@ -94,7 +96,7 @@ contract DAICO {
     }
 
     //
-    function approvePayment(uint index)
+    function voteForPayment(uint index)
         public
     {
         Payment storage payment = payments[index];
@@ -108,7 +110,7 @@ contract DAICO {
         //set the voter's right to false
         payment.voters[msg.sender] = true;
         
-        payment.voterCount.add(1);
+        payment.voterCount += 1;
     }
 
     function doPay(uint index)
