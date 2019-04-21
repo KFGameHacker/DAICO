@@ -1,8 +1,11 @@
 pragma solidity ^0.5.0;
+import "./SafeMath.sol";
 
 //Project for DAICO
 
 contract DAICO {
+    using SafeMath for uint;
+
     struct Payment{
         string description;
         uint amount;
@@ -32,10 +35,16 @@ contract DAICO {
         //money amount checking
         require(msg.value >= minInvest);
         require(msg.value <= maxInvest);
-        require(address(this).balance <= goal);
+        
+        //require(address(this).balance <= goal);
+        //using SafeMath to protect overflow
+        uint newBalance = 0;
+        newBalance = address(this).balance.add(msg.value);
+        require(newBalance <= goal);
 
-        //add msg sender to the investor list
+        //add msg sender to the investor list 
         investors.push(msg.sender);
+
     }
 
     // generate a payment
