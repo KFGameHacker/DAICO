@@ -23,7 +23,9 @@ contract DAICO {
         uint amount;
         address payable receiver;
         bool completed;
-        address[] voters;
+        //address[] voters;
+        mapping(address=>bool) voters;
+        uint voterCount;
     }
 
     address public owner;
@@ -31,7 +33,10 @@ contract DAICO {
     uint public maxInvest;
     uint public minInvest;
     uint public goal;
-    address[] public investors;
+    //address[] public investors;
+    uint public investorCount;
+    mapping (address=>uint) public investors;
+
     Payment[] public payments;
 
     constructor(string memory _description, uint _minInvest, uint _maxInvest, uint _goal)
@@ -60,7 +65,11 @@ contract DAICO {
         require(newBalance <= goal);
 
         //add msg sender to the investor list 
-        investors.push(msg.sender);
+        // xxxxxxxxx => xxxx wei
+        // example:
+        // 5D35F3e..D => 100000 wei
+        investors[msg.sender] = msg.value;
+        investorCount.add(1);
 
     }
 
@@ -77,7 +86,7 @@ contract DAICO {
             amount: _amount,
             receiver: _receiver,
             completed: false,
-            voters: new address[](0)
+            voterCount:0
         });
 
         // push payments
@@ -91,27 +100,15 @@ contract DAICO {
         Payment storage payment = payments[index];
         
         //check is investor
-        bool isInvestor = false;
-        for(uint i=0;i<investors.length;i++){
-            isInvestor = investors[i] == msg.sender;
-            if(isInvestor){
-                break;
-            }
-        }
+        require(investors[msg.sender]>0);
+
+        //can't now vote twice
+        require(!payment.voters[msg.sender]);
+
+        //set the voter's right to false
+        payment.voters[msg.sender] = true;
         
-        require(isInvestor);
-
-        bool hasVoted = false;
-        for(uint j=0;j<payment.voters.length;j++){
-            hasVoted = payment.voters[j] == msg.sender;
-            if(hasVoted){
-                break;
-            }
-        }
-
-        require(!hasVoted);
-
-        payment.voters.push(msg.sender);
+        payment.voterCount.add(1);
     }
 
     function doPay(uint index)
@@ -126,7 +123,7 @@ contract DAICO {
         require(!payment.completed);
 
         //voter must more than half of investors
-        require(payment.voters.length>(investors.length/2));
+        require(payment.voterCount > (investorCount/2));
 
         //transfer the money
         payment.receiver.transfer(payment.amount);
