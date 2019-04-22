@@ -3,7 +3,7 @@ import "./SafeMath.sol";
 
 //Project for DAICO
 
-contract DAICO {
+contract DAICO_Project {
     using SafeMath for uint;
 
     //to check the function caller is owner
@@ -72,7 +72,6 @@ contract DAICO {
         //and the total invest amount accumulating correctly
         investors[msg.sender] += msg.value;
         investorCount += 1;
-
     }
 
     // generate a payment
