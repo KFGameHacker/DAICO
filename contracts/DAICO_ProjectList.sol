@@ -9,7 +9,7 @@ contract DAICO_ProjectList{
     function createProject(string memory _description, uint _minInvest, uint _maxInvest, uint _goal)
         public
     {
-        address newProject = address(new DAICO_Project(_description,_minInvest,_maxInvest,_goal));
+        address newProject = address(new DAICO_Project(_description,_minInvest,_maxInvest,_goal,msg.sender));
         projects.push(newProject);
     }
 

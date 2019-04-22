@@ -39,10 +39,10 @@ contract DAICO_Project {
 
     Payment[] public payments;
 
-    constructor(string memory _description, uint _minInvest, uint _maxInvest, uint _goal)
+    constructor(string memory _description, uint _minInvest, uint _maxInvest, uint _goal, address _owner)
         public
     {
-        owner       = msg.sender;
+        owner       =  _owner;
         description = _description;
         minInvest   = _minInvest;
         maxInvest   = _maxInvest;
