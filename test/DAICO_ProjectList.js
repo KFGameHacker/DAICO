@@ -10,28 +10,31 @@ contract('DAICO ProjectList', async (accounts) =>{
     let investorB = accounts[1];
     let investorC = accounts[2];
 
-    beforeEach(async()=>{
+    before(async()=>{
 
         //delopy a contract
         PListInstance = await DAICO_ProjectList.deployed();
 
         //create project1
         await PListInstance.createProject('上交易所',100,1000,100000);
+        console.log("\nProject List Contract deployed at " + PListInstance.address);
 
         //get address from project1
         projectList = await PListInstance.getProjects();
 
         //load contract from address
         project1 = await DAICO_Project.at(projectList[0]);
-        
+        console.log("Project "+ await project1.description() +" deployed at " + project1.address);
     });
 
     it('should has 10 accounts with balance',async() =>{
         let tempBalance;
         for(let i=0;i<accounts.length;i++){
             tempBalance = await web3.eth.getBalance(accounts[i]);
+            console.log("account "+i+" is => "+accounts[i]);
             assert.ok(tempBalance);
         }
+        console.log("\n");
     });
 
     it('should deploy ProjectList and Project', async () => {
