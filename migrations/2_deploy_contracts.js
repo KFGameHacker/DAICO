@@ -4,6 +4,6 @@ const SafeMath = artifacts.require("./contracts/SafeMath.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(SafeMath);
-  deployer.deploy(DAICO_Project,'一个大项目',50,10000,100000);
+  //deployer.deploy(DAICO_Project,'一个大项目',50,10000,100000);
   deployer.deploy(DAICO_ProjectList);
 };
