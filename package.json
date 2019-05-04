@@ -28,5 +28,10 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "web3": "^1.0.0-beta.54"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.12.0",
+    "eslint-plugin-react": "^7.13.0"
   }
 }
