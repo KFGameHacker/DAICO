@@ -49120,6 +49120,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // eslint-disable-next-line no-unused-vars
 
 
 
@@ -49131,6 +49132,10 @@ var styles = function styles(theme) {
     }
   };
 };
+/**
+ * The Index page render
+ */
+
 
 var Index =
 /*#__PURE__*/
@@ -49145,6 +49150,7 @@ function (_React$Component) {
 
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__["default"])(Index, [{
     key: "render",
+    // eslint-disable-next-line require-jsdoc
     value: function render() {
       var classes = this.props.classes;
       return react__WEBPACK_IMPORTED_MODULE_5___default.a.createElement("div", {
