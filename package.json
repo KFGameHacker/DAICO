@@ -9,8 +9,8 @@
   "scripts": {
     "test": "truffle test",
     "dev": "next",
-    "build":"next build",
-    "start":"next start"
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -24,8 +24,9 @@
   "homepage": "https://github.com/KFGameHacker/DAICO#readme",
   "dependencies": {
     "next": "^8.1.0",
+    "next-routes": "^1.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "web3": "^1.0.0-beta.52"
+    "web3": "^1.0.0-beta.54"
   }
 }
