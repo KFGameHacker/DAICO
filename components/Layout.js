@@ -1,6 +1,7 @@
 import React from 'react';
 import {withStyles} from '@material-ui/core/styles';
 import { Divider } from '@material-ui/core';
+import Header from './Header'
 
 const styles = {
   container: {
@@ -23,7 +24,8 @@ class Layout extends React.Component{
 
         return(
             <div className={classes.container}>
-                <div className={classes.wrapper}>{this.props.children}</div>
+              <Header />
+              <div className={classes.wrapper}>{this.props.children}</div>
             </div>
         );
     }

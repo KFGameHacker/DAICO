@@ -22,7 +22,7 @@ class Index extends React.Component {
       <div className={classes.root}>
         <Layout>
           <Button variant="contained" color="primary">
-                        Welcome to Ethereum ICO DApp!
+            Welcome to Ethereum ICO DApp!
           </Button>
         </Layout>
       </div>
