@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-// eslint-disable-next-line no-unused-vars
 import {Button} from '@material-ui/core';
+import Layout from '../components/Layout';
 
 const styles = (theme) =>({
   root: {
@@ -20,9 +20,11 @@ class Index extends React.Component {
 
     return (
       <div className={classes.root}>
-        <Button variant="contained" color="primary">
-                    Welcome to Ethereum ICO DApp!
-        </Button>
+        <Layout>
+          <Button variant="contained" color="primary">
+                        Welcome to Ethereum ICO DApp!
+          </Button>
+        </Layout>
       </div>
     );
   }

@@ -19424,6 +19424,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _material_ui_core_colors_green__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_material_ui_core_colors_green__WEBPACK_IMPORTED_MODULE_4__);
 
 
+/* eslint-disable max-len */
+
+/* eslint-disable require-jsdoc */
+
 
 
  // A theme with custom primary and secondary color.

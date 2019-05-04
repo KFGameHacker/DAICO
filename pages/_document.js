@@ -1,11 +1,15 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable max-len */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, {Head, Main, NextScript} from 'next/document';
 import flush from 'styled-jsx/server';
 
+// eslint-disable-next-line require-jsdoc
 class MyDocument extends Document {
+  // eslint-disable-next-line require-jsdoc
   render() {
-    const { pageContext } = this.props;
+    const {pageContext} = this.props;
 
     return (
       <html lang="en" dir="ltr">
@@ -23,7 +27,7 @@ class MyDocument extends Document {
           />
           <link
             rel="stylesheet"
-            //href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+            // href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
         </Head>
         <body>
@@ -35,7 +39,7 @@ class MyDocument extends Document {
   }
 }
 
-MyDocument.getInitialProps = ctx => {
+MyDocument.getInitialProps = (ctx) => {
   // Resolution order
   //
   // On the server:
@@ -60,8 +64,8 @@ MyDocument.getInitialProps = ctx => {
 
   // Render app and page and get the context of the page with collected side effects.
   let pageContext;
-  const page = ctx.renderPage(Component => {
-    const WrappedComponent = props => {
+  const page = ctx.renderPage((Component) => {
+    const WrappedComponent = (props) => {
       pageContext = props.pageContext;
       return <Component {...props} />;
     };
@@ -88,7 +92,7 @@ MyDocument.getInitialProps = ctx => {
         <style
           id="jss-server-side"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: css }}
+          dangerouslySetInnerHTML={{__html: css}}
         />
         {flush() || null}
       </React.Fragment>
