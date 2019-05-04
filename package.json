@@ -24,10 +24,12 @@
   "homepage": "https://github.com/KFGameHacker/DAICO#readme",
   "dependencies": {
     "@material-ui/core": "^3.9.3",
+    "jss": "^9.8.7",
     "next": "^8.1.0",
     "next-routes": "^1.4.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-jss": "^8.6.1",
     "web3": "^1.0.0-beta.54"
   },
   "devDependencies": {
