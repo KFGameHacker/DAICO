@@ -34,17 +34,17 @@ class Header extends React.Component{
             <AppBar position='static' color='default'>
                 <div className={classes.wrapper}>
                     <Toolbar className={classes.toolbar}>
-                        <Typography variant='title' color='inherit' className={classes.brand}>
+                        <Typography variant='h5' color='inherit' className={classes.brand}>
                             DAICO Dapp
                         </Typography>
                         <p className={classes.flexContainer}>
                             <a href='/' className={classes.anchor}>
-                            <Typography variant="title" color="inherit">
+                            <Typography variant="h5" color="inherit">
                                 项目列表
                             </Typography>
                             </a>
                         </p>
-                    <Button variant='raised' color='primary'>
+                    <Button variant='contained' color='primary'>
                             发起项目
                     </Button>
                     </Toolbar>
