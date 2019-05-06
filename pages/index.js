@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {withStyles} from '@material-ui/core/styles';
-import {Button} from '@material-ui/core';
 import Layout from '../components/Layout';
-import Web3 from 'web3';
+import web3 from '../libs/web3';
 
 const styles = (theme) =>({
   root: {
@@ -25,11 +24,11 @@ class Index extends React.Component {
 
   //init we3 provider before mount
   async componentDidMount(){
-    const web3 = new Web3(window.web3.currentProvider);
     const accounts = await web3.eth.getAccounts();
+    const balances = await Promise.all(accounts.map(x=>web3.eth.getBalance(x)));
     console.log(accounts);
 
-    this.setState({accounts});
+    this.setState({ accounts: accounts.map((x, i) => ({ account: x, balance: balances[i] })) });
   };
 
   // eslint-disable-next-line require-jsdoc
@@ -40,7 +39,13 @@ class Index extends React.Component {
     return (
       <div className={classes.root}>
         <Layout>
-         <ul>{accounts.map(x => <li key={x}>{x}</li>)}</ul>
+        <ul>
+           {accounts.map(x => (
+             <li key={x.account}>
++              {x.account} => {web3.utils.fromWei(x.balance, 'ether')} ETH
+             </li>
+           ))}
+         </ul>
         </Layout>
       </div>
     );
