@@ -16,7 +16,7 @@ contract DAICO_ProjectList{
     function getProjects()
         public 
         view
-        returns(address [] memory)
+        returns(address[] memory)
     {
         return projects;
     }

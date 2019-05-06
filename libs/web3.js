@@ -8,7 +8,7 @@ if(typeof window !== 'undefined' && typeof window.web3 !== 'undefined'){
 
 // if metamask not installed
 } else {
-    web3 = new Web3(new Web3.providers.HttpProvider('mainnet.infura.io/v3/ecec9484016146d9869a0b913d9ea408'));
+    web3 = new Web3(new Web3.providers.HttpProvider('rinkeby.infura.io/v3/ecec9484016146d9869a0b913d9ea408'));
 }
 
 export default web3;
