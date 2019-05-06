@@ -3275,15 +3275,15 @@
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
   "networks": {
-    "5777": {
+    "3": {
       "events": {},
       "links": {},
-      "address": "0x12304bDE995EC5248dD062aCDdAF93D6eb4cCA5A",
-      "transactionHash": "0xba66399fd8ba22f7770046344977604cb68324a5353aa7ce425d73bc6119181b"
+      "address": "0xb1Ca8173Ad3B974880A4b7Dd4255f77716DAD057",
+      "transactionHash": "0xa7b86ffcb4ad5ac6c02b297a853ba7c4eb3dfda496f4958b4c90382044a584f7"
     }
   },
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-27T04:03:36.157Z",
+  "updatedAt": "2019-05-06T10:19:08.226Z",
   "devdoc": {
     "details": "Unsigned math operations with safety checks that revert on error",
     "methods": {},
